@@ -6,6 +6,14 @@ project(
   DESCRIPTION "A simple demo"
   LANGUAGES CXX)
 
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  set(CMAKE_CXX_STANDARD 20)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+
+  add_subdirectory(examples)
+endif()
+
 file(GLOB HEADER_LIST include/*.h)
 aux_source_directory(src SOURCE_LIST)
 
