@@ -22,9 +22,18 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   set(gtest_force_shared_crt ON)
   FetchContent_MakeAvailable(googletest)
 
+  FetchContent_Declare(
+    googlebenchmark
+    GIT_REPOSITORY https://github.com/google/benchmark.git
+    GIT_TAG v1.6.0)
+  set(BENCHMARK_ENABLE_TESTING OFF)
+  FetchContent_MakeAvailable(googlebenchmark)
+
   enable_testing()
 
   add_subdirectory(tests)
+
+  add_subdirectory(benches)
 
   add_subdirectory(examples)
 endif()
