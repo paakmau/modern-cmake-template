@@ -17,14 +17,15 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     googletest
     GIT_REPOSITORY https://github.com/google/googletest.git
     GIT_TAG v1.10.x)
+
   # For Windows: Prevent overriding the parent project's compiler/linker
   # settings
   set(gtest_force_shared_crt
-      ON
-      CACHE BOOL "" FORCE)
+    ON
+    CACHE BOOL "" FORCE)
   set(INSTALL_GTEST
-      OFF
-      CACHE BOOL "" FORCE)
+    OFF
+    CACHE BOOL "" FORCE)
   FetchContent_MakeAvailable(googletest)
 
   FetchContent_Declare(
@@ -32,11 +33,11 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     GIT_REPOSITORY https://github.com/google/benchmark.git
     GIT_TAG v1.6.0)
   set(BENCHMARK_ENABLE_TESTING
-      OFF
-      CACHE BOOL "" FORCE)
+    OFF
+    CACHE BOOL "" FORCE)
   set(BENCHMARK_ENABLE_INSTALL
-      OFF
-      CACHE BOOL "" FORCE)
+    OFF
+    CACHE BOOL "" FORCE)
   FetchContent_MakeAvailable(googlebenchmark)
 
   enable_testing()
@@ -58,7 +59,7 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 target_include_directories(
   ${PROJECT_NAME} PUBLIC $<INSTALL_INTERFACE:include>
-                         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 
 install(
   TARGETS ${PROJECT_NAME}
@@ -87,5 +88,5 @@ write_basic_package_version_file(
   COMPATIBILITY AnyNewerVersion)
 
 install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-              "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-        DESTINATION lib/cmake/${PROJECT_NAME})
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+  DESTINATION lib/cmake/${PROJECT_NAME})
