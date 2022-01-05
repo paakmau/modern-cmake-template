@@ -63,30 +63,25 @@ target_include_directories(
 
 install(
   TARGETS ${PROJECT_NAME}
-  EXPORT ${PROJECT_NAME}Targets
+  EXPORT ${PROJECT_NAME}Config
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 
 install(DIRECTORY include/${PROJECT_NAME} DESTINATION include)
 
 install(
-  EXPORT ${PROJECT_NAME}Targets
-  FILE ${PROJECT_NAME}Targets.cmake
+  EXPORT ${PROJECT_NAME}Config
+  DESTINATION lib/cmake/${PROJECT_NAME}
   NAMESPACE ${PROJECT_NAME}::
-  DESTINATION lib/cmake/${PROJECT_NAME})
+  FILE ${PROJECT_NAME}Config.cmake)
 
 include(CMakePackageConfigHelpers)
-
-configure_package_config_file(
-  cmake/${PROJECT_NAME}Config.cmake.in
-  ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-  INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
 
 write_basic_package_version_file(
   ${PROJECT_NAME}ConfigVersion.cmake
   VERSION ${PACKAGE_VERSION}
   COMPATIBILITY AnyNewerVersion)
 
-install(FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+install(
+  FILES "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
   DESTINATION lib/cmake/${PROJECT_NAME})
