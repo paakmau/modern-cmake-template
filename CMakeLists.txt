@@ -64,8 +64,8 @@ target_include_directories(
 install(
   TARGETS ${PROJECT_NAME}
   EXPORT ${PROJECT_NAME}Config
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib)
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib)
 
 install(DIRECTORY include/${PROJECT_NAME} DESTINATION include)
 
