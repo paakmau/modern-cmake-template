@@ -3,5 +3,5 @@
 #include <cstdio>
 
 int main() {
-    printf("%s", Demo::HelloWorld());
+    printf("%s\n", Demo::HelloWorld());
 }
