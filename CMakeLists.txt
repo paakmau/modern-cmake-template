@@ -50,8 +50,9 @@ add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 target_include_directories(
-  ${PROJECT_NAME} PUBLIC $<INSTALL_INTERFACE:include>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+  ${PROJECT_NAME} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
 
 install(
   TARGETS ${PROJECT_NAME}
@@ -71,7 +72,6 @@ include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
   ${PROJECT_NAME}ConfigVersion.cmake
-  VERSION ${PACKAGE_VERSION}
   COMPATIBILITY AnyNewerVersion)
 
 install(
